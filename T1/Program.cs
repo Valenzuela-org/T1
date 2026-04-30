@@ -3,7 +3,7 @@ Console.WriteLine("++++++++++ BIENVENIDO AL BANCO ++++++++++");
 Console.WriteLine("++++++++++  SISTEMA DE CAJERO   ++++++++++");
 Console.WriteLine("-------------------------------------------");
 
-double saldo = 1000.0; // Saldo inicial base
+double saldo = 1000.0; 
         int opcion = 0;
 
         while (opcion != 4) {
@@ -18,6 +18,28 @@ double saldo = 1000.0; // Saldo inicial base
             if (opcion == 1) {
                 Console.WriteLine($"Su saldo actual es: ${saldo:F2}");
             }
-            // Las demás opciones se implementarán en la siguiente fase
+            else if (opcion == 2) {
+                Console.Write("Ingrese monto a depositar: ");
+                double deposito = double.Parse(Console.ReadLine());
+                if (deposito > 0) {
+                    saldo += deposito;
+                    Console.WriteLine("Depósito exitoso.");
+                } else {
+                    Console.WriteLine("Monto inválido.");
+                }
+            }
+            else if (opcion == 3) {
+                Console.Write("Ingrese monto a retirar: ");
+                double retiro = double.Parse(Console.ReadLine());
+                // Condicional anidada para validar fondos
+                if (retiro > saldo) {
+                    Console.WriteLine("Error: Fondos insuficientes.");
+                } else if (retiro <= 0) {
+                    Console.WriteLine("Monto inválido.");
+                } else {
+                    saldo -= retiro;
+                    Console.WriteLine("Retiro exitoso.");
         }
         Console.WriteLine("Gracias por usar nuestros servicios.");
+            }
+        }
